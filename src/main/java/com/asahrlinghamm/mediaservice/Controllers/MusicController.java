@@ -18,7 +18,7 @@ public class MusicController {
         private MusicService musicService;
 
         @GetMapping("/songs")
-     /*   public ResponseEntity getAllSongs() {
+   /*     public ResponseEntity getAllSongs() {
             return new ResponseEntity<>(musicService.getAllSongs(),HttpStatus.OK);
         }*/
         public List<Music> getAllSongs() {

@@ -4,7 +4,6 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Document(collection = "pods")
@@ -14,7 +13,7 @@ public class Pod {
     private ObjectId id;
     private String title;
     private String description;
-    private Date releaseDate;
+    private String releaseDate;
     //private int albumId;
 
    // @ManyToMany
@@ -25,7 +24,7 @@ public class Pod {
     public Pod() {
     }
 
-    public Pod(ObjectId id, String title, String description, Date releaseDate, List<Speaker> speakers, List<Genre> genres) {
+    public Pod(ObjectId id, String title, String description, String releaseDate, List<Speaker> speakers, List<Genre> genres) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -58,11 +57,11 @@ public class Pod {
         this.description = description;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 

@@ -7,7 +7,7 @@ import jakarta.persistence.ManyToMany;*/
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import java.util.Date;
+
 import java.util.List;
 
 @Document(collection = "music")
@@ -20,17 +20,17 @@ public class Music {
     //private int albumId;
 
    // @ManyToMany
-    private List<Artist> artists;
+    private List<String> artists;
     //@ManyToMany
-    private List<Genre> genres;
+    private List<String> genres;
 
     //@ManyToMany
-    private List<Album> albums;
+    private List<String> albums;
 
     public Music() {
     }
 
-    public Music(ObjectId id, String name, String releaseDate, List<Artist> artists, List<Genre> genres, List<Album> albums) {
+    public Music(ObjectId id, String name, String releaseDate, List<String> artists, List genres, List<String> albums) {
         this.id = id;
         this.name = name;
         this.releaseDate = releaseDate;
@@ -63,27 +63,31 @@ public class Music {
         this.releaseDate = releaseDate;
     }
 
-    public List<Artist> getArtists() {
+    public List<String> getArtists() {
         return artists;
     }
 
-    public void setArtists(List<Artist> artists) {
+    public void setArtists(List<String> artists) {
         this.artists = artists;
     }
 
-    public List<Genre> getGenres() {
+    public List getGenres() {
         return genres;
     }
 
-    public void setGenres(List<Genre> genres) {
+    public void setGenres(List<String> genres) {
         this.genres = genres;
     }
 
-    public List<Album> getAlbums() {
+/*    public void setGenres(List<String> genres) {
+        this.genres = genres;
+    }*/
+
+    public List<String> getAlbums() {
         return albums;
     }
 
-    public void setAlbums(List<Album> albums) {
+    public void setAlbums(List<String> albums) {
         this.albums = albums;
     }
 

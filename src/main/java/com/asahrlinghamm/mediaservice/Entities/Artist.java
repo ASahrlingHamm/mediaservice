@@ -2,16 +2,15 @@ package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Document(collection = "artists")
 public class Artist {
     @Id
    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private ObjectId id;
     private String name;
     //private int albumId;
 
@@ -21,17 +20,17 @@ public class Artist {
     public Artist() {
     }
 
-    public Artist(int id, String name, List<Music> songs) {
+    public Artist(ObjectId id, String name, List<Music> songs) {
         this.id = id;
         this.name = name;
         this.songs = songs;
     }
 
-    public int getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

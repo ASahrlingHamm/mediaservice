@@ -2,7 +2,7 @@ package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
 public class Actor {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private ObjectId id;
     private String name;
 
    // @ManyToMany
@@ -19,17 +19,17 @@ public class Actor {
     public Actor() {
     }
 
-    public Actor(int id, String name, List<Video> videos) {
+    public Actor(ObjectId id, String name, List<Video> videos) {
         this.id = id;
         this.name = name;
         this.videos = videos;
     }
 
-    public int getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

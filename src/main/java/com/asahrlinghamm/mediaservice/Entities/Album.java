@@ -2,7 +2,7 @@ package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
+import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
 import java.util.Date;
 import java.util.List;
@@ -11,7 +11,7 @@ import java.util.List;
 public class Album {
     @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private ObjectId id;
     private String title;
     private Date releaseDate;
 
@@ -23,7 +23,7 @@ public class Album {
     public Album() {
     }
 
-    public Album(int id, String title, Date releaseDate, List<Artist> artists, List<Music> songs) {
+    public Album(ObjectId id, String title, Date releaseDate, List<Artist> artists, List<Music> songs) {
         this.id = id;
         this.title = title;
         this.releaseDate = releaseDate;
@@ -31,11 +31,11 @@ public class Album {
         this.songs = songs;
     }
 
-    public int getId() {
+    public ObjectId getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(ObjectId id) {
         this.id = id;
     }
 

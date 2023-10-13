@@ -12,27 +12,27 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/pods")
+//@RequestMapping("/pods")
 public class PodController {
 
     @Autowired
     private PodService podService;
 
-    @GetMapping("/")
+    @GetMapping("/pods")
     public List<Pod> getAllPods() {
         return podService.getAllPods();}
 
 
-    @PostMapping("/")
+    @PostMapping("/addPod")
     public ResponseEntity<Pod> addPod (@RequestBody Pod pod){
         return new ResponseEntity<Pod>(podService.addPod(pod), HttpStatus.OK);}
 
 
-    @PutMapping("/{id}")
+    @PutMapping("/updatepod/{id}")
     public ResponseEntity<Pod> updatePod (@PathVariable("id") ObjectId id, @RequestBody Pod pod){
         return ResponseEntity.ok(podService.updatePod(pod, id));}
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletepod/{id}")
     public ResponseEntity<String> deletePod ( @PathVariable("id") ObjectId id){
         podService.deletePod(id);
         return new ResponseEntity<String>("Pod deleted!", HttpStatus.OK);

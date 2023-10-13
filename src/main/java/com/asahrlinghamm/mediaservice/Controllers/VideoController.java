@@ -11,26 +11,26 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/movies")
+//@RequestMapping("/movies")
 public class VideoController {
     @Autowired
     private VideoService videoService;
 
-    @GetMapping("/")
+    @GetMapping("/movies")
     public List<Video> getAllVideos() {
         return videoService.getAllVideos();}
 
 
-    @PostMapping("/")
+    @PostMapping("/addmovie")
     public ResponseEntity<Video> addVideo (@RequestBody Video video){
         return new ResponseEntity<Video>(videoService.addVideo(video), HttpStatus.OK);}
 
 
-    @PutMapping("/{id}")
+    @PutMapping("/updatemovie/{id}")
     public ResponseEntity<Video> updateVideo (@PathVariable("id") ObjectId id, @RequestBody Video video){
         return ResponseEntity.ok(videoService.updateVideo(video, id));}
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/deletemovie/{id}")
     public ResponseEntity<String> deleteVideo ( @PathVariable("id") ObjectId id){
         videoService.deleteVideo(id);
         return new ResponseEntity<String>("Movie deleted!", HttpStatus.OK);
