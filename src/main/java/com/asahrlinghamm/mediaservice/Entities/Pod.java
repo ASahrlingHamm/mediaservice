@@ -1,6 +1,7 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
@@ -17,8 +18,10 @@ public class Pod {
     //private int albumId;
 
    // @ManyToMany
+    @DBRef
     private List<Speaker>speakers;
    // @ManyToMany
+    @DBRef
     private List<Genre>genres;
 
     public Pod() {

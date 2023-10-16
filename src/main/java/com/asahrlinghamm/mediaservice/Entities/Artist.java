@@ -1,6 +1,7 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
@@ -15,6 +16,7 @@ public class Artist {
     //private int albumId;
 
    // @ManyToMany
+    @DBRef
     private List<Music> songs;
 
     public Artist() {

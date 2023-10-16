@@ -1,6 +1,7 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
@@ -14,6 +15,7 @@ public class Actor {
     private String name;
 
    // @ManyToMany
+    @DBRef
     private List<Video>videos;
 
     public Actor() {
