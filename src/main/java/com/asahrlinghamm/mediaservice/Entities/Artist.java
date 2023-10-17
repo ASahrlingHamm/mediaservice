@@ -1,19 +1,21 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
 import java.util.List;
 
-@Document(collection = "artists")
+@Document(collection = "creators")
+@TypeAlias("artists")
 public class Artist {
-    @Id
+/*    @Id
    // @GeneratedValue(strategy = GenerationType.IDENTITY)
     private ObjectId id;
     private String name;
-    //private int albumId;
+    //private int albumId;*/
 
    // @ManyToMany
     @DBRef
@@ -22,26 +24,8 @@ public class Artist {
     public Artist() {
     }
 
-    public Artist(ObjectId id, String name, List<Music> songs) {
-        this.id = id;
-        this.name = name;
+    public Artist(List<Music> songs) {
         this.songs = songs;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<Music> getSongs() {
@@ -55,8 +39,6 @@ public class Artist {
     @Override
     public String toString() {
         return "Artist{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
                 ", songs=" + songs +
                 '}';
     }

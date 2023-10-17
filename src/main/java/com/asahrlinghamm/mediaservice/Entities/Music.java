@@ -6,17 +6,18 @@ import jakarta.persistence.*;
 import jakarta.persistence.ManyToMany;*/
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-@Document(collection = "music")
-public class Music {
-    @Id
+@Document(collection = "media")
+@TypeAlias("music")
+public class Music extends Media {
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private ObjectId id;
-    private String name;
+    /*private ObjectId id;
+    private String name;*/
     private String releaseDate;
     //private int albumId;
 
@@ -36,7 +37,7 @@ public class Music {
 
     public Music(ObjectId id, String name, String releaseDate, List<Artist> artists, List<Genre> genres, List<Album> albums) {
         this.id = id;
-        this.name = name;
+        this.title = name;
         this.releaseDate = releaseDate;
         this.artists = artists;
         this.genres = genres;
@@ -51,12 +52,12 @@ public class Music {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getTitle() {
+        return title;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public String getReleaseDate() {
@@ -98,12 +99,13 @@ public class Music {
     @Override
     public String toString() {
         return "Music{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", releaseDate=" + releaseDate +
+                "releaseDate='" + releaseDate + '\'' +
                 ", artists=" + artists +
                 ", genres=" + genres +
                 ", albums=" + albums +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
                 '}';
     }
 }

@@ -1,18 +1,19 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
 import java.util.List;
 
-@Document(collection = "pods")
-public class Pod {
-    @Id
+@Document(collection = "media")
+@TypeAlias("pods")
+public class Pod extends Media {
    // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private ObjectId id;
-    private String title;
+   /* private ObjectId id;
+    private String title;*/
     private String description;
     private String releaseDate;
     //private int albumId;
@@ -87,12 +88,13 @@ public class Pod {
     @Override
     public String toString() {
         return "Pod{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", description='" + description + '\'' +
-                ", releaseDate=" + releaseDate +
+                "description='" + description + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
                 ", speakers=" + speakers +
                 ", genres=" + genres +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
                 '}';
     }
 }

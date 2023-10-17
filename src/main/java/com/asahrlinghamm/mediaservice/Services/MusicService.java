@@ -29,7 +29,7 @@ public class MusicService implements MusicServiceInterface {
     @Override
     public Music updateSong(Music music, ObjectId id) {
         Music m = musicRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Music", "Id", id));
-        m.setName(music.getName());
+        m.setTitle(music.getTitle());
         m.setReleaseDate(music.getReleaseDate());
         m.setArtists(music.getArtists());
         m.setGenres(music.getGenres());

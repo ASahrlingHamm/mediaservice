@@ -1,23 +1,23 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 //import jakarta.persistence.*;
-import java.util.Date;
 import java.util.List;
 import org.bson.types.ObjectId;
 
-@Document(collection = "movies")
-public class Video {
-    @Id
+@Document(collection = "media")
+@TypeAlias("movies")
+public class Video extends Media{
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
-    private ObjectId id;
-    private String title;
+    //private ObjectId id;
+    //private String title;
     private String director;
     private String description;
-    private Date releaseDate;
+    private String releaseDate;
     //private int albumId;
 
     //@ManyToMany
@@ -30,7 +30,7 @@ public class Video {
     public Video() {
     }
 
-    public Video(ObjectId id, String title, String director, String description, Date releaseDate, List<Actor> actors, List<Genre> genres) {
+    public Video(ObjectId id, String title, String director, String description, String releaseDate, List<Actor> actors, List<Genre> genres) {
         this.id = id;
         this.title = title;
         this.director = director;
@@ -72,11 +72,11 @@ public class Video {
         this.description = description;
     }
 
-    public Date getReleaseDate() {
+    public String getReleaseDate() {
         return releaseDate;
     }
 
-    public void setReleaseDate(Date releaseDate) {
+    public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
     }
 
@@ -99,13 +99,14 @@ public class Video {
     @Override
     public String toString() {
         return "Video{" +
-                "id=" + id +
-                ", title='" + title + '\'' +
-                ", director='" + director + '\'' +
+                "director='" + director + '\'' +
                 ", description='" + description + '\'' +
-                ", releaseDate=" + releaseDate +
+                ", releaseDate='" + releaseDate + '\'' +
                 ", actors=" + actors +
                 ", genres=" + genres +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
                 '}';
     }
 }

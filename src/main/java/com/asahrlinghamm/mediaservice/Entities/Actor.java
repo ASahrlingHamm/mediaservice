@@ -1,18 +1,20 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.annotation.TypeAlias;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 //import jakarta.persistence.*;
 import java.util.List;
 
-@Document(collection = "actors")
+@Document(collection = "creators")
+@TypeAlias("actors")
 public class Actor {
-    @Id
+ /*   @Id
     //@GeneratedValue(strategy = GenerationType.IDENTITY)
     private ObjectId id;
-    private String name;
+    private String name;*/
 
    // @ManyToMany
     @DBRef
@@ -21,26 +23,8 @@ public class Actor {
     public Actor() {
     }
 
-    public Actor(ObjectId id, String name, List<Video> videos) {
-        this.id = id;
-        this.name = name;
+    public Actor(List<Video> videos) {
         this.videos = videos;
-    }
-
-    public ObjectId getId() {
-        return id;
-    }
-
-    public void setId(ObjectId id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<Video> getVideos() {
@@ -54,8 +38,6 @@ public class Actor {
     @Override
     public String toString() {
         return "Actor{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
                 ", videos=" + videos +
                 '}';
     }

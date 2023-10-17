@@ -1,6 +1,5 @@
 package com.asahrlinghamm.mediaservice.Services;
 
-import com.asahrlinghamm.mediaservice.Entities.Pod;
 import com.asahrlinghamm.mediaservice.Entities.Video;
 import com.asahrlinghamm.mediaservice.Exceptions.ResourceNotFoundException;
 import com.asahrlinghamm.mediaservice.Repositories.VideoRepository;
