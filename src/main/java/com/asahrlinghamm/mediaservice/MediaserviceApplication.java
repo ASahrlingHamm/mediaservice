@@ -8,6 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 @SpringBootApplication
 //@EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
+@EnableMongoRepositories
 public class MediaserviceApplication {
 
 	public static void main(String[] args) {

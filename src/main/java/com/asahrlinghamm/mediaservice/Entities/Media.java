@@ -1,7 +1,6 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.bson.types.ObjectId;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
@@ -10,22 +9,23 @@ import java.util.List;
 public class Media {
     private ObjectId id;
     private String title;
-    private String mediaType;
+    private String media_type;
     private String url;
-    private String releaseDate;
-    private String genres;
-    @DBRef
+    private String release_date;
+    private List<String> genres;
+
+
     private List<String> artists;
 
     public Media() {
     }
 
-    public Media(ObjectId id, String title, String mediaType, String url, String releaseDate, String genres, List<String> artists) {
+    public Media(ObjectId id, String title, String media_type, String url, String release_date, List<String> genres, List<String> artists) {
         this.id = id;
         this.title = title;
-        this.mediaType = mediaType;
+        this.media_type = media_type;
         this.url = url;
-        this.releaseDate = releaseDate;
+        this.release_date = release_date;
         this.genres = genres;
         this.artists = artists;
     }
@@ -46,12 +46,12 @@ public class Media {
         this.title = title;
     }
 
-    public String getMediaType() {
-        return mediaType;
+    public String getMedia_type() {
+        return media_type;
     }
 
-    public void setMediaType(String mediaType) {
-        this.mediaType = mediaType;
+    public void setMedia_type(String media_type) {
+        this.media_type = media_type;
     }
 
     public String getUrl() {
@@ -62,19 +62,19 @@ public class Media {
         this.url = url;
     }
 
-    public String getReleaseDate() {
-        return releaseDate;
+    public String getRelease_date() {
+        return release_date;
     }
 
-    public void setReleaseDate(String releaseDate) {
-        this.releaseDate = releaseDate;
+    public void setRelease_date(String release_date) {
+        this.release_date = release_date;
     }
 
-    public String getGenres() {
+    public List<String> getGenres() {
         return genres;
     }
 
-    public void setGenres(String genres) {
+    public void setGenres(List<String> genres) {
         this.genres = genres;
     }
 
@@ -91,9 +91,9 @@ public class Media {
         return "Media{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", mediaType='" + mediaType + '\'' +
+                ", mediaType='" + media_type + '\'' +
                 ", url='" + url + '\'' +
-                ", releaseDate='" + releaseDate + '\'' +
+                ", releaseDate='" + release_date + '\'' +
                 ", genres='" + genres + '\'' +
                 ", artists=" + artists +
                 '}';

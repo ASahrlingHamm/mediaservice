@@ -25,4 +25,6 @@ public interface MediaServiceInterface {
 
     void deleteVideo(ObjectId id);
 
+    List<Media> getAllMedia();
+
 }

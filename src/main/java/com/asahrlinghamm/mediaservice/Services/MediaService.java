@@ -30,9 +30,9 @@ public class MediaService implements MediaServiceInterface{
     public Media updateSong(Media song, ObjectId id) {
         Media s = mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Song", "Id", id));
         s.setTitle(song.getTitle());
-        s.setMediaType(song.getMediaType());
+        s.setMedia_type(song.getMedia_type());
         s.setUrl(song.getUrl());
-        s.setReleaseDate(song.getReleaseDate());
+        s.setRelease_date(song.getRelease_date());
         s.setGenres(song.getGenres());
         s.setArtists(song.getArtists());
         mediaRepository.save(s);
@@ -59,9 +59,9 @@ public class MediaService implements MediaServiceInterface{
     public Media updatePod(Media pod, ObjectId id) {
         Media p = mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Pod", "Id", id));
         p.setTitle(pod.getTitle());
-        p.setMediaType(pod.getMediaType());
+        p.setMedia_type(pod.getMedia_type());
         p.setUrl(pod.getUrl());
-        p.setReleaseDate(pod.getReleaseDate());
+        p.setRelease_date(pod.getRelease_date());
         p.setGenres(pod.getGenres());
         p.setArtists(pod.getArtists());
         mediaRepository.save(p);
@@ -88,9 +88,9 @@ public class MediaService implements MediaServiceInterface{
     public Media updateVideo(Media video, ObjectId id) {
         Media v = mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Video", "Id", id));
         v.setTitle(video.getTitle());
-        v.setMediaType(video.getMediaType());
+        v.setMedia_type(video.getMedia_type());
         v.setUrl(video.getUrl());
-        v.setReleaseDate(video.getReleaseDate());
+        v.setRelease_date(video.getRelease_date());
         v.setGenres(video.getGenres());
         v.setArtists(video.getArtists());
         mediaRepository.save(v);
@@ -101,6 +101,11 @@ public class MediaService implements MediaServiceInterface{
     public void deleteVideo(ObjectId id) {
         mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Video", "Id", id));
         mediaRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Media> getAllMedia() {
+        return mediaRepository.findAll();
     }
 
 
