@@ -11,11 +11,12 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 public class MediaController {
 
     @Autowired
     private MediaService mediaService;
+
 
     @GetMapping
     @RequestMapping("/everything")
@@ -24,7 +25,8 @@ public class MediaController {
     }
 
 
-    @GetMapping("/songs")
+    @GetMapping
+    @RequestMapping("/songs")
   /*      public ResponseEntity getAllSongs() {
             return new ResponseEntity<>(mediaService.getAllSongs(),HttpStatus.OK);
         }*/

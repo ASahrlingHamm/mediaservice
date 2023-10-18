@@ -9,23 +9,22 @@ import java.util.List;
 public class Media {
     private ObjectId id;
     private String title;
-    private String media_type;
+    private String mediaType;
     private String url;
-    private String release_date;
+    private String releaseDate;
     private List<String> genres;
-
 
     private List<String> artists;
 
     public Media() {
     }
 
-    public Media(ObjectId id, String title, String media_type, String url, String release_date, List<String> genres, List<String> artists) {
+    public Media(ObjectId id, String title, String mediaType, String url, String releaseDate, List<String> genres, List<String> artists) {
         this.id = id;
         this.title = title;
-        this.media_type = media_type;
+        this.mediaType = mediaType;
         this.url = url;
-        this.release_date = release_date;
+        this.releaseDate = releaseDate;
         this.genres = genres;
         this.artists = artists;
     }
@@ -46,12 +45,12 @@ public class Media {
         this.title = title;
     }
 
-    public String getMedia_type() {
-        return media_type;
+    public String getMediaType() {
+        return mediaType;
     }
 
-    public void setMedia_type(String media_type) {
-        this.media_type = media_type;
+    public void setMediaType(String mediaType) {
+        this.mediaType = mediaType;
     }
 
     public String getUrl() {
@@ -62,12 +61,12 @@ public class Media {
         this.url = url;
     }
 
-    public String getRelease_date() {
-        return release_date;
+    public String getReleaseDate() {
+        return releaseDate;
     }
 
-    public void setRelease_date(String release_date) {
-        this.release_date = release_date;
+    public void setReleaseDate(String releaseDate) {
+        this.releaseDate = releaseDate;
     }
 
     public List<String> getGenres() {
@@ -91,9 +90,9 @@ public class Media {
         return "Media{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
-                ", mediaType='" + media_type + '\'' +
+                ", mediaType='" + mediaType + '\'' +
                 ", url='" + url + '\'' +
-                ", releaseDate='" + release_date + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
                 ", genres='" + genres + '\'' +
                 ", artists=" + artists +
                 '}';

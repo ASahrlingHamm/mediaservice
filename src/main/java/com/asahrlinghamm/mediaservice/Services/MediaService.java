@@ -23,16 +23,16 @@ public class MediaService implements MediaServiceInterface{
 
     @Override
     public List<Media> getAllSongs() {
-        return mediaRepository.findAll();
+        return mediaRepository.findMediaByMediaTypeContains("song");
     }
 
     @Override
     public Media updateSong(Media song, ObjectId id) {
         Media s = mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Song", "Id", id));
         s.setTitle(song.getTitle());
-        s.setMedia_type(song.getMedia_type());
+        s.setMediaType(song.getMediaType());
         s.setUrl(song.getUrl());
-        s.setRelease_date(song.getRelease_date());
+        s.setReleaseDate(song.getReleaseDate());
         s.setGenres(song.getGenres());
         s.setArtists(song.getArtists());
         mediaRepository.save(s);
@@ -52,16 +52,16 @@ public class MediaService implements MediaServiceInterface{
 
     @Override
     public List<Media> getAllPods() {
-        return mediaRepository.findAll();
+        return mediaRepository.findMediaByMediaTypeContains("podcast");
     }
 
     @Override
     public Media updatePod(Media pod, ObjectId id) {
         Media p = mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Pod", "Id", id));
         p.setTitle(pod.getTitle());
-        p.setMedia_type(pod.getMedia_type());
+        p.setMediaType(pod.getMediaType());
         p.setUrl(pod.getUrl());
-        p.setRelease_date(pod.getRelease_date());
+        p.setReleaseDate(pod.getReleaseDate());
         p.setGenres(pod.getGenres());
         p.setArtists(pod.getArtists());
         mediaRepository.save(p);
@@ -81,16 +81,16 @@ public class MediaService implements MediaServiceInterface{
 
     @Override
     public List<Media> getAllVideos() {
-        return mediaRepository.findAll();
+        return mediaRepository.findMediaByMediaTypeContains("movie");
     }
 
     @Override
     public Media updateVideo(Media video, ObjectId id) {
         Media v = mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Video", "Id", id));
         v.setTitle(video.getTitle());
-        v.setMedia_type(video.getMedia_type());
+        v.setMediaType(video.getMediaType());
         v.setUrl(video.getUrl());
-        v.setRelease_date(video.getRelease_date());
+        v.setReleaseDate(video.getReleaseDate());
         v.setGenres(video.getGenres());
         v.setArtists(video.getArtists());
         mediaRepository.save(v);
@@ -109,8 +109,4 @@ public class MediaService implements MediaServiceInterface{
     }
 
 
-    /*List<Media> getAllMedia();
-    Music updateSong(Music music, ObjectId id);
-
-    void deleteSong(ObjectId id);*/
 }
