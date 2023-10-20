@@ -1,6 +1,7 @@
 package com.asahrlinghamm.mediaservice.Controllers;
 
 import com.asahrlinghamm.mediaservice.Entities.Media;
+import com.asahrlinghamm.mediaservice.Entities.ObjectIdDto;
 import com.asahrlinghamm.mediaservice.Services.MediaService;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -44,6 +45,11 @@ public class MediaController {
     @GetMapping("/artists/{artists}")
     public ResponseEntity<List<Media>> getMediaByArtists(@PathVariable String artists){
         return ResponseEntity.ok((mediaService.getMediaByArtists(deconstruct(artists))));
+    }
+
+    @PostMapping("/media/list")
+    public ResponseEntity<List<Media>> getListOfMedia(@RequestBody List<ObjectIdDto> request){
+        return ResponseEntity.ok(mediaService.getListOfMediaByIds(request));
     }
 
 
