@@ -6,9 +6,11 @@ import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.web.bind.annotation.*;
 
+
+import java.util.Arrays;
 import java.util.List;
 
 @RestController
@@ -23,6 +25,28 @@ public class MediaController {
     public ResponseEntity getEverythingAllAtOnce() {
         return new ResponseEntity(mediaService.getAllMedia(),HttpStatus.OK);
     }
+
+    @GetMapping("/genre/{genre}")
+    public ResponseEntity<List<Media>> getMediaByGenre(@PathVariable String genre){
+        return ResponseEntity.ok(mediaService.getMediaByGenre(genre));
+    }
+
+    @GetMapping("/genres/{genres}")
+    public ResponseEntity<List<Media>> getMediaByGenres(@PathVariable String  genres){
+        return ResponseEntity.ok(mediaService.getMediaByGenres(deconstruct(genres)));
+    }
+
+    @GetMapping("/artist/{artist}")
+    public ResponseEntity<List<Media>> getMediaForArtist(@PathVariable String artist){
+        return ResponseEntity.ok((mediaService.getMediaByArtist(artist)));
+    }
+
+    @GetMapping("/artists/{artists}")
+    public ResponseEntity<List<Media>> getMediaByArtists(@PathVariable String artists){
+        return ResponseEntity.ok((mediaService.getMediaByArtists(deconstruct(artists))));
+    }
+
+
 
 
     @GetMapping
@@ -87,5 +111,12 @@ public class MediaController {
     public ResponseEntity<String> deleteVideo ( @PathVariable("id") ObjectId id){
         mediaService.deleteVideo(id);
         return new ResponseEntity<String>("Movie deleted!", HttpStatus.OK);
+    }
+
+    //
+    public List<String> deconstruct(String pathVariable){
+        String[] list ;
+        list = pathVariable.split(",");
+        return Arrays.stream(list).toList();
     }
 }

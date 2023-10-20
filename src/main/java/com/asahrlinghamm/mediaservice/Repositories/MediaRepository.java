@@ -9,6 +9,16 @@ import java.util.List;
 @Repository
 public interface MediaRepository extends MongoRepository<Media, ObjectId> {
     List<Media>findMediaByMediaTypeContains(String mediaType);
+
+    List<Media> findMediaByGenresContainsIgnoreCase(String genre);
+
+    List<Media> findMediaByArtistsContainsIgnoreCase(String artist);
+
+    List<Media> findMediaByGenresContainsIgnoreCase(List<String> genres);
+
+    List<Media> findMediaByArtistsContainsIgnoreCase(List<String> artists);
+
+
     //List<Media>findMediaByTitleContains(String title);
     //List<Media>findMediaByArtistsContains(String artist);
     //List<Media>findMediaByReleaseDateContains(String releaseDate);

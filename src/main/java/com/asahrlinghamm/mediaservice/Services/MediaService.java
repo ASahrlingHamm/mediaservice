@@ -39,6 +39,22 @@ public class MediaService implements MediaServiceInterface{
         return s;
     }
 
+    public List<Media> getMediaByGenre(String genre){
+        return mediaRepository.findMediaByGenresContainsIgnoreCase(genre);
+    }
+
+    public List<Media> getMediaByGenres(List<String> genres){
+        return mediaRepository.findMediaByGenresContainsIgnoreCase(genres);
+    }
+
+    public List<Media> getMediaByArtist(String artist){
+        return mediaRepository.findMediaByArtistsContainsIgnoreCase(artist);
+    }
+
+    public List<Media> getMediaByArtists(List<String> artists){
+        return mediaRepository.findMediaByArtistsContainsIgnoreCase(artists);
+    }
+
     @Override
     public void deleteSong(ObjectId id) {
         mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Music", "Id", id));
