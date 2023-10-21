@@ -3,10 +3,13 @@ package com.asahrlinghamm.mediaservice.Services;
 import com.asahrlinghamm.mediaservice.Entities.Media;
 import com.asahrlinghamm.mediaservice.Exceptions.ResourceNotFoundException;
 import com.asahrlinghamm.mediaservice.Repositories.MediaRepository;
+import com.asahrlinghamm.mediaservice.Entities.ObjectIdDto;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -63,6 +66,14 @@ public class MediaService implements MediaServiceInterface{
 
     public List<Media> getMediaByArtists(List<String> artists){
         return mediaRepository.findMediaByArtistsContainsIgnoreCase(artists);
+    }
+
+    public List<Media> getListOfMediaByIds(List<ObjectIdDto> request){
+        List<ObjectId> test = new ArrayList<>();
+        for(ObjectIdDto dto:request){
+            test.add(dto.getObjectId());
+        }
+        return (List<Media>) mediaRepository.findAllById(test);
     }
 
 
