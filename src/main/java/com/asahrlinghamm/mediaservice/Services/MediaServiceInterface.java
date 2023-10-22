@@ -7,24 +7,14 @@ import java.util.List;
 
 public interface MediaServiceInterface {
 
-    Media addSong(Media song);
-    List<Media> getAllSongs();
-    Media updateSong(Media song, ObjectId id);
+    Media addMedia(Media media);
+    Media updateMedia(Media media, ObjectId id);
 
-    void deleteSong(ObjectId id);
-
-    Media addPod(Media pod);
-    List<Media> getAllPods();
-    Media updatePod(Media pod, ObjectId id);
-
-    void deletePod(ObjectId id);
-
-    Media addVideo(Media video);
-    List<Media> getAllVideos();
-    Media updateVideo(Media video, ObjectId id);
-
-    void deleteVideo(ObjectId id);
+    void deleteMedia(ObjectId id);
 
     List<Media> getAllMedia();
+
+/*    List<Media> getAllMediaByArtist(Media artists);
+    List<Media> getAllMediaByGenre(Media genres);*/
 
 }

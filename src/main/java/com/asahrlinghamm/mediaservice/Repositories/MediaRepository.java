@@ -19,12 +19,9 @@ public interface MediaRepository extends MongoRepository<Media, ObjectId> {
     List<Media> findMediaByArtistsContainsIgnoreCase(List<String> artists);
 
 
-
-
-
-
     //List<Media>findMediaByTitleContains(String title);
-    //List<Media>findMediaByArtistsContains(String artist);
+    //List<Media>findMediaByArtistsContaining(String[] artists);
+    //List<Media>findMediaByGenresContaining(String[] genres);
     //List<Media>findMediaByReleaseDateContains(String releaseDate);
 
 }
