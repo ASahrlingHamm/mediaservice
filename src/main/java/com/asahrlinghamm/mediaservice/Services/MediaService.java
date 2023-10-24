@@ -42,11 +42,17 @@ public class MediaService implements MediaServiceInterface{
         mediaRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Media", "Id", id));
         mediaRepository.deleteById(id);
     }
+    
 
     @Override
     public List<Media> getAllMedia() {
         return mediaRepository.findAll();
     }
+    
+	@Override
+	public Media getMediaById(ObjectId mediaId) {
+		return mediaRepository.findById(mediaId).orElseThrow(() -> new ResourceNotFoundException("Media", "ID", mediaId));
+	}
 
     public List<Media> getAllMediaByMediaType(String mediaType) {
         return mediaRepository.findMediaByMediaTypeContains(mediaType);
@@ -75,6 +81,7 @@ public class MediaService implements MediaServiceInterface{
         }
         return (List<Media>) mediaRepository.findAllById(test);
     }
+
 
 
 /*    @Override

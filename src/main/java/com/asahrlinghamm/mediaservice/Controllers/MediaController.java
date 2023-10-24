@@ -56,6 +56,11 @@ public class MediaController {
     public ResponseEntity<List<Media>> getListOfMedia(@RequestBody List<ObjectIdDto> request){
         return ResponseEntity.ok(mediaService.getListOfMediaByIds(request));
     }
+    
+    @GetMapping("/media/{mediaId}")
+    public ResponseEntity<Media> getMediaById(@PathVariable ObjectId mediaId) {
+    	return ResponseEntity.ok(mediaService.getMediaById(mediaId));
+    }
 
 
 /*
