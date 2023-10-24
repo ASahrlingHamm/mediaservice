@@ -20,10 +20,8 @@ public class MediaserviceApplication {
 	}
 
 	@Bean
-	public Jackson2ObjectMapperBuilderCustomizer customizer(){
-
-		return builder -> builder.serializerByType(ObjectId.class,new ToStringSerializer());
-
+	public Jackson2ObjectMapperBuilderCustomizer customizer() {
+		return builder -> builder.serializerByType(ObjectId.class, new ToStringSerializer());
 	}
 
 }
