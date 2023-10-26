@@ -27,29 +27,36 @@ public class MediaController {
         return new ResponseEntity(mediaService.getAllMedia(), HttpStatus.OK);
     }
 
+    @PostMapping("/media")
+    public ResponseEntity<Media> addMedia (@RequestBody Media media){
+        return new ResponseEntity<Media>(mediaService.addMedia(media), HttpStatus.OK);}
+
+
+    @PutMapping("/media/{id}")
+    public ResponseEntity<Media> updateMedia (@PathVariable("id") ObjectId id, @RequestBody Media media){
+        return ResponseEntity.ok(mediaService.updateMedia(media, id));}
+
+    @DeleteMapping("media/{id}")
+    public ResponseEntity<String> deleteMedia ( @PathVariable("id") ObjectId id){
+        mediaService.deleteMedia(id);
+        return new ResponseEntity<String>("Deleted!", HttpStatus.OK);
+    }
+
+
     @GetMapping("/getmediabytype/{mediatype}")
     public ResponseEntity<List<Media>> getMediaByType(@PathVariable String mediatype){
-        return ResponseEntity.ok(mediaService.getAllMediaByMediaType(mediatype));
+        return ResponseEntity.ok(mediaService.getMediaByType(mediatype));
     }
+
 
     @GetMapping("/genre/{genre}")
     public ResponseEntity<List<Media>> getMediaByGenre(@PathVariable String genre){
         return ResponseEntity.ok(mediaService.getMediaByGenre(genre));
     }
 
-    @GetMapping("/genres/{genres}")
-    public ResponseEntity<List<Media>> getMediaByGenres(@PathVariable String  genres){
-        return ResponseEntity.ok(mediaService.getMediaByGenres(deconstruct(genres)));
-    }
-
     @GetMapping("/artist/{artist}")
     public ResponseEntity<List<Media>> getMediaForArtist(@PathVariable String artist){
         return ResponseEntity.ok((mediaService.getMediaByArtist(artist)));
-    }
-
-    @GetMapping("/artists/{artists}")
-    public ResponseEntity<List<Media>> getMediaByArtists(@PathVariable String artists){
-        return ResponseEntity.ok((mediaService.getMediaByArtists(deconstruct(artists))));
     }
 
     @PostMapping("/media/list")
@@ -62,6 +69,34 @@ public class MediaController {
     	return ResponseEntity.ok(mediaService.getMediaById(mediaId));
     }
 
+    public List<String> deconstruct(String pathVariable){
+        String[] list ;
+        list = pathVariable.split(",");
+        return Arrays.stream(list).toList();
+    }
+
+
+
+
+ /*   @GetMapping("/getmediabygenre/{genre}")
+    public ResponseEntity<List<Media>> getMediaByGenre(@PathVariable String genre){
+        return ResponseEntity.ok(mediaService.getMediaByGenre(genre));
+    }*/
+
+   /* @GetMapping("/getmediabymediatype/{mediatype}")
+    public ResponseEntity<List<Media>> getMediaByMediaType(@PathVariable String mediatype){
+        return ResponseEntity.ok(mediaService.getMediaByMediaType(mediatype));
+    }*/
+
+/*    @GetMapping("/genres/{genres}")
+    public ResponseEntity<List<Media>> getMediaByGenres(@PathVariable String  genres){
+        return ResponseEntity.ok(mediaService.getMediaByGenres(deconstruct(genres)));
+    }*/
+
+/*    @GetMapping("/artists/{artists}")
+    public ResponseEntity<List<Media>> getMediaByArtists(@PathVariable String artists){
+        return ResponseEntity.ok((mediaService.getMediaByArtists(deconstruct(artists))));
+    }*/
 
 /*
     @GetMapping
@@ -91,11 +126,6 @@ public class MediaController {
 
 
     //
-    public List<String> deconstruct(String pathVariable){
-        String[] list ;
-        list = pathVariable.split(",");
-        return Arrays.stream(list).toList();
-    }
 
 
 

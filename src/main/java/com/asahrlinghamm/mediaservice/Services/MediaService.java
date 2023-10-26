@@ -54,25 +54,23 @@ public class MediaService implements MediaServiceInterface{
 		return mediaRepository.findById(mediaId).orElseThrow(() -> new ResourceNotFoundException("Media", "ID", mediaId));
 	}
 
-    public List<Media> getAllMediaByMediaType(String mediaType) {
+    @Override
+    public List<Media> getMediaByType(String mediaType) {
         return mediaRepository.findMediaByMediaTypeContains(mediaType);
     }
 
-    public List<Media> getMediaByGenre(String genre){
-        return mediaRepository.findMediaByGenresContainsIgnoreCase(genre);
+    @Override
+    public List<Media> getMediaByGenre(String genres) {
+        return mediaRepository.findMediaByGenresContains(genres);
     }
 
-    public List<Media> getMediaByGenres(List<String> genres){
-        return mediaRepository.findMediaByGenresContainsIgnoreCase(genres);
-    }
-
+    @Override
     public List<Media> getMediaByArtist(String artist){
         return mediaRepository.findMediaByArtistsContainsIgnoreCase(artist);
     }
 
-    public List<Media> getMediaByArtists(List<String> artists){
-        return mediaRepository.findMediaByArtistsContainsIgnoreCase(artists);
-    }
+
+
 
     public List<Media> getListOfMediaByIds(List<ObjectIdDto> request){
         List<ObjectId> test = new ArrayList<>();
@@ -94,6 +92,26 @@ public class MediaService implements MediaServiceInterface{
     public List<Media> getAllMediaByGenre(Media genres) {
 
         return mediaRepository.findMediaByGenresContaining();
+    }*/
+
+     /*   @Override
+    public List<Media> getMediaByMediaType(String mediaType) {
+        return mediaRepository.getMediaByMediaTypeIsContaining(mediaType);
+    }*/
+
+   /* @Override
+    public List<Media> getMediaByGenre(String genre){
+        return mediaRepository.findMediaByGenresContainsIgnoreCase(genre);
+    }
+
+    @Override
+    public List<Media> getMediaByGenres(List<String> genres){
+        return mediaRepository.findMediaByGenresContainsIgnoreCase(genres);
+    }*/
+
+     /*   @Override
+    public List<Media> getMediaByArtists(List<String> artists){
+        return mediaRepository.findMediaByArtistsContainsIgnoreCase(artists);
     }*/
 
 
