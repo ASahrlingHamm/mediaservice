@@ -48,10 +48,6 @@ public class MediaController {
         return ResponseEntity.ok(mediaService.getMediaByType(mediatype));
     }
 
-    @GetMapping("/mediabyid/{mediaId}")
-    public ResponseEntity<Media> getMediaById(@PathVariable ObjectId mediaId) {
-        return ResponseEntity.ok(mediaService.getMediaById(mediaId));
-    }
 
     @GetMapping("/genre/{genre}")
     public ResponseEntity<List<Media>> getMediaByGenre(@PathVariable String genre){

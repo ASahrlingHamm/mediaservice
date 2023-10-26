@@ -70,10 +70,7 @@ public class MediaService implements MediaServiceInterface{
     }
 
 
-    @Override
-    public Media getMediaById(ObjectId mediaId) {
-        return mediaRepository.findById(mediaId).orElseThrow(() -> new ResourceNotFoundException("Media", "ID", mediaId));
-    }
+
 
     public List<Media> getListOfMediaByIds(List<ObjectIdDto> request){
         List<ObjectId> test = new ArrayList<>();
