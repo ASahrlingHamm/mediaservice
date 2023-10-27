@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface MediaRepository extends MongoRepository<Media, ObjectId> {
-    List<Media>findMediaByMediaTypeContains(String mediaType);
+    List<Media> findMediaByMediaType(String mediaType);
 
     List<Media> findMediaByGenresContainsIgnoreCase(String genre);
 
@@ -18,10 +18,15 @@ public interface MediaRepository extends MongoRepository<Media, ObjectId> {
 
     List<Media> findMediaByArtistsContainsIgnoreCase(List<String> artists);
 
+    List<Media> findMediaByMediaTypeAndArtistsContains(String mediaType, String Artist);
+
+
+
+
+
 
     //List<Media>findMediaByTitleContains(String title);
-    //List<Media>findMediaByArtistsContaining(String[] artists);
-    //List<Media>findMediaByGenresContaining(String[] genres);
+    //List<Media>findMediaByArtistsContains(String artist);
     //List<Media>findMediaByReleaseDateContains(String releaseDate);
 
 }

@@ -44,12 +44,17 @@ public class MediaService implements MediaServiceInterface{
     }
 
     @Override
+    public Media getMediaById(ObjectId mediaId) {
+        return mediaRepository.findById(mediaId).orElseThrow(() -> new ResourceNotFoundException("Media", "ID", mediaId));
+    }
+
+    @Override
     public List<Media> getAllMedia() {
         return mediaRepository.findAll();
     }
 
     public List<Media> getAllMediaByMediaType(String mediaType) {
-        return mediaRepository.findMediaByMediaTypeContains(mediaType);
+        return mediaRepository.findMediaByMediaType(mediaType);
     }
 
     public List<Media> getMediaByGenre(String genre){
@@ -66,6 +71,11 @@ public class MediaService implements MediaServiceInterface{
 
     public List<Media> getMediaByArtists(List<String> artists){
         return mediaRepository.findMediaByArtistsContainsIgnoreCase(artists);
+    }
+
+    public List<Media> getMediaByArtistsAndMediaType(String artist, String mediaType){
+        return mediaRepository.findMediaByMediaTypeAndArtistsContains(mediaType,artist);
+        //return mediaRepository.findMediaByMediaType(mediaType);
     }
 
     public List<Media> getListOfMediaByIds(List<ObjectIdDto> request){

@@ -15,6 +15,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
+//@RequestMapping("/media")
 public class MediaController {
 
     @Autowired
@@ -57,6 +58,11 @@ public class MediaController {
         return ResponseEntity.ok(mediaService.getListOfMediaByIds(request));
     }
 
+    @GetMapping("{Artist}/allMedia/{MediaType}")
+    public ResponseEntity getListOfMediaWithArtist(@PathVariable String Artist, @PathVariable String MediaType){
+        return new ResponseEntity(mediaService.getMediaByArtistsAndMediaType(Artist,MediaType), HttpStatus.OK);
+    }
+
 
 /*
     @GetMapping
@@ -84,6 +90,10 @@ public class MediaController {
     }
     */
 
+@GetMapping("/media/{mediaId}")
+public ResponseEntity<Media> getMediaById(@PathVariable ObjectId mediaId) {
+    return ResponseEntity.ok(mediaService.getMediaById(mediaId));
+}
 
     //
     public List<String> deconstruct(String pathVariable){

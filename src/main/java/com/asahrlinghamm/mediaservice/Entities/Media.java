@@ -1,12 +1,15 @@
 package com.asahrlinghamm.mediaservice.Entities;
 
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
 @Document(collection = "media")
 public class Media {
+
+    @Id
     private ObjectId id;
     private String title;
     private String mediaType;
@@ -15,6 +18,26 @@ public class Media {
     private List<String> genres;
 
     private List<String> artists;
+
+    String album_id;
+
+    int album_ord;
+
+    public String getAlbum_id() {
+        return album_id;
+    }
+
+    public void setAlbum_id(String album_id) {
+        this.album_id = album_id;
+    }
+
+    public int getAlbum_ord() {
+        return album_ord;
+    }
+
+    public void setAlbum_ord(int album_ord) {
+        this.album_ord = album_ord;
+    }
 
     public Media() {
     }
