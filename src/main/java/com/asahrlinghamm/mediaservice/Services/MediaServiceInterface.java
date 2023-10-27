@@ -14,8 +14,6 @@ public interface MediaServiceInterface {
 
     List<Media> getAllMedia();
 
-    Media getMediaById(ObjectId mediaId);
-
 /*    List<Media> getAllMediaByArtist(Media artists);
     List<Media> getAllMediaByGenre(Media genres);*/
 
